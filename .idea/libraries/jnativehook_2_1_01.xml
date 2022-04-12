@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="jnativehook-2.1.01">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/CapsCheck/CapsCheck/CapsLock Check/out/production/CapsLock Check/libs/jnativehook-2.1.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
