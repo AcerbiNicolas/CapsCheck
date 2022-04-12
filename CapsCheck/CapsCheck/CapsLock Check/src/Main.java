@@ -1,13 +1,17 @@
+import java.awt.Dimension;
+import java.awt.Taskbar;
+import java.awt.Toolkit;
+import java.awt.event.KeyEvent;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+import javax.swing.JFrame;
+import javax.swing.WindowConstants;
+
 import org.jnativehook.GlobalScreen;
 import org.jnativehook.NativeHookException;
 import org.jnativehook.keyboard.NativeKeyEvent;
 import org.jnativehook.keyboard.NativeKeyListener;
-
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.KeyEvent;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class Main {
     private static boolean running = true;
@@ -29,14 +33,9 @@ public class Main {
         int heigt =(int) screenSize.getHeight();
 
         JFrame information = new JFrame();
-        information.setBounds(width / 4, heigt / 4, width / 2, heigt / 2);
+        information.setBounds(width / 8, heigt / 8, width / 8, heigt / 8);
         information.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-
-
-
         information.setVisible(true);
-
-
 
 
 
@@ -64,8 +63,6 @@ public class Main {
 
     public static void changeWindowOptions(JFrame info){
         Taskbar taskbar = Taskbar.getTaskbar();
-
-
         taskbar.setWindowProgressValue(info, 100);
 
         if(isActive){
@@ -86,6 +83,11 @@ public class Main {
         @Override
         public void nativeKeyPressed(NativeKeyEvent nativeKeyEvent) {
 
+
+        }
+
+        @Override
+        public void nativeKeyReleased(NativeKeyEvent nativeKeyEvent) {
             if (nativeKeyEvent.getKeyCode() == NativeKeyEvent.VC_CAPS_LOCK){
 
                 if (isActive){
@@ -95,15 +97,5 @@ public class Main {
                 }
             }
         }
-
-        @Override
-        public void nativeKeyReleased(NativeKeyEvent nativeKeyEvent) {
-
-        }
     };
-
-
-
-
-
 }
