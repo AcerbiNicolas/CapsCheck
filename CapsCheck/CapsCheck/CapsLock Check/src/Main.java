@@ -18,12 +18,7 @@ public class Main {
     private static boolean isActive = false;
     static JFrame  green;
 
-
-
-
     public static void main(String[] args) throws NativeHookException {
-
-
         Toolkit kit = Toolkit.getDefaultToolkit();
 
         isActive = kit.getLockingKeyState(KeyEvent.VK_CAPS_LOCK);   //Check caps when application is run
@@ -37,30 +32,21 @@ public class Main {
         information.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         information.setVisible(true);
 
-
-
         Logger l = Logger.getLogger(GlobalScreen.class.getPackage().getName());
         l.setLevel(Level.OFF);
 
-
         GlobalScreen.registerNativeHook();
         GlobalScreen.addNativeKeyListener(listener);
-
         while(running){
             try {
                 changeWindowOptions(information);
                 Thread.sleep(300);
-
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
         }
-
         GlobalScreen.unregisterNativeHook();
-
     }
-
-
     public static void changeWindowOptions(JFrame info){
         Taskbar taskbar = Taskbar.getTaskbar();
         taskbar.setWindowProgressValue(info, 100);
@@ -73,23 +59,16 @@ public class Main {
             taskbar.setWindowProgressState(info, Taskbar.State.OFF);
         }
     }
-
     private static NativeKeyListener listener = new NativeKeyListener() {
         @Override
         public void nativeKeyTyped(NativeKeyEvent nativeKeyEvent) {
-
         }
-
         @Override
         public void nativeKeyPressed(NativeKeyEvent nativeKeyEvent) {
-
-
         }
-
         @Override
         public void nativeKeyReleased(NativeKeyEvent nativeKeyEvent) {
             if (nativeKeyEvent.getKeyCode() == NativeKeyEvent.VC_CAPS_LOCK){
-
                 if (isActive){
                     isActive = false;
                 }else{
